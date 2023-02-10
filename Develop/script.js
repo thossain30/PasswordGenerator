@@ -4,6 +4,11 @@ function generatePassword() {
   let lowerChars = upperChars.toLowerCase();
   let numbers = "0123456789"
   let specialChars = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+  let isLower;
+  let isUpper;
+  let isNumber;
+  let isSpecial;
   // 1. Prompt the user for criteria
   //    a. length ( greater than 8 and less than 128)
   // prompts for length
@@ -16,13 +21,30 @@ function generatePassword() {
   }
   //    b. Char types (uppercase, lowercase, special, etc.)
   // repeats these prompts until at least one char type is true;
-  while (!isLower && !isUpper && !isNumber && !isSpecial ) {
-    let isLower = confirm("Would you like lowercase letters?");
-    let isUpper = confirm("Would you like uppercase letters?");
-    let isNumber = confirm("Would you like numbers?");
-    let isSpecial = confirm("And finally, would you like special characters?");
+  do {
+    isLower = confirm("Would you like lowercase letters?");
+    isUpper = confirm("Would you like uppercase letters?");
+    isNumber = confirm("Would you like numbers?");
+    isSpecial = confirm("And finally, would you like special characters?");
+  } while (!isLower && !isUpper && !isNumber && !isSpecial )
+  // 2. Validate the input
+
+  // The set of characters valid for the input
+  let chars = "";
+  if (isLower) {
+    chars += lowerChars;
+  } 
+  if (isUpper) {
+    chars += upperChars;
   }
-  // 2. Validate the input 
+  if (isNumber) {
+    chars += numbers;
+  }
+  if (isSpecial) {
+    chars += specialChars;
+  }
+
+  console.log("chars: " + chars);
   // 3. Generate password based on criteria
 
 
