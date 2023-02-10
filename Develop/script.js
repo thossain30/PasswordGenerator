@@ -1,5 +1,9 @@
 // Assignment code here
 function generatePassword() {
+  let upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let lowerChars = upperChars.toLowerCase();
+  let numbers = "0123456789"
+  let specialChars = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   // 1. Prompt the user for criteria
   //    a. length ( greater than 8 and less than 128)
   // prompts for length
@@ -11,6 +15,13 @@ function generatePassword() {
     length = prompt("Please enter a number between 8 and 128");
   }
   //    b. Char types (uppercase, lowercase, special, etc.)
+  // repeats these prompts until at least one char type is true;
+  while (!isLower && !isUpper && !isNumber && !isSpecial ) {
+    let isLower = confirm("Would you like lowercase letters?");
+    let isUpper = confirm("Would you like uppercase letters?");
+    let isNumber = confirm("Would you like numbers?");
+    let isSpecial = confirm("And finally, would you like special characters?");
+  }
   // 2. Validate the input 
   // 3. Generate password based on criteria
 
@@ -19,7 +30,6 @@ function generatePassword() {
   let result = "password will go here";
   return result;
 }
-
 // Get references to the #generate element
 // This let refers to the button at the bottom
 let generateBtn = document.querySelector("#generate");
